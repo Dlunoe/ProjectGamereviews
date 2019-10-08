@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import ReviewsList from './ReviewsList/ReviewsList';
+import ReviewShow from './ReviewShow/ReviewShow';
+import {Route, Switch} from 'react-router-dom';
 
 
 class ReviewContainer extends Component {
     constructor(){
         super();
         this.state = {
-            reviews: []
+            reviews: [],
+            thisReview: []
         }
     }
     componentDidMount(){
@@ -19,11 +22,25 @@ class ReviewContainer extends Component {
             reviews: parsedResponse
         })
     }
+    handleClick=(id)=>{
+        this.findReview(id);
+    }
+    findReview = (id) =>{
+        let thisReview = this.state.reviews.filter(review => review.id === id)
+        console.log(thisReview)
+        this.setState(prevState => ({
+            thisReview
+        }))
+    }
     render(){
         return(
             <div>
-                <h1>weldome to reviews</h1>
-                <ReviewsList reviews={this.state.reviews}/>
+                <h1>welcome to reviews</h1>
+                <Switch>
+                    <Route exact path="/reviews" render={(props) => <ReviewsList reviews={this.state.reviews} handleClick={this.handleClick}/>}/>
+                    <Route exact path='/reviews/:id' render={(props)=> <ReviewShow reviews={this.state.reviews} reviewInfo={this.state.thisReview[0]}/>}/>
+                </Switch>
+                
             </div>
         )
     }
