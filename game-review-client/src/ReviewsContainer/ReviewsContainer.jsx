@@ -25,7 +25,7 @@ class ReviewContainer extends Component {
     handleClick=(id)=>{
         this.findReview(id);
     }
-    findReview = (id) =>{
+    findReview = async (id) =>{
         let thisReview = this.state.reviews.filter(review => review.id === id)
         console.log(thisReview)
         this.setState(prevState => ({
@@ -38,7 +38,8 @@ class ReviewContainer extends Component {
                 <h1>welcome to reviews</h1>
                 <Switch>
                     <Route exact path="/reviews" render={(props) => <ReviewsList reviews={this.state.reviews} handleClick={this.handleClick}/>}/>
-                    <Route exact path='/reviews/:id' render={(props)=> <ReviewShow reviews={this.state.reviews} reviewInfo={this.state.thisReview[0]}/>}/>
+                    {/* <Route path='/reviews/:id' render={(props)=> <ReviewShow reviews={this.state.reviews} findReview={this.findReview} reviewInfo={this.state.thisReview[0]}/>}/> */}
+                    <Route path ="/reviews/:id" component={ReviewShow}/>
                 </Switch>
                 
             </div>
