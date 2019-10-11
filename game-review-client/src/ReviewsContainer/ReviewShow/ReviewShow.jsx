@@ -23,7 +23,8 @@ class Review extends Component {
         //clicking the links in the parent component still passes the id of the oject through to the url
         //this lets the object in the DB be accessed whether the user clicked through or manually types the id in
         let singleReview = await fetch(`http://localhost:3001/reviews/`+id)
-        const thisReview = await singleReview.json();
+        let objectReview = await singleReview.json(); let thisReview = objectReview.review;
+        console.log(thisReview)
         this.setState(prevState => ({
             thisReview
         }))
