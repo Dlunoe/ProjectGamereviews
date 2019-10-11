@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import {Button} from 'reactstrap';
+import EditReview from '../EditReviewModal/EditReview';
 
 class Review extends Component {
     constructor(){
@@ -39,6 +41,7 @@ class Review extends Component {
                 <h1>{this.state.thisReview.title}</h1>
                 <p>{this.state.thisReview.description}</p>
                 <p>{this.state.thisReview.review}</p>
+                <EditReview review={this.state.thisReview} />
                 <Link to="/reviews">Back</Link>
             </div> 
         )
