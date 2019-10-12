@@ -18,7 +18,7 @@ class ReviewContainer extends Component {
     getReviews = async () => {
         const reviews = await fetch("http://localhost:3001/reviews")
         const parsedResponse = await reviews.json();
-        console.log(parsedResponse)
+        // console.log(parsedResponse)
         this.setState({
             reviews: parsedResponse.reviews
         })
@@ -28,22 +28,25 @@ class ReviewContainer extends Component {
     }
     findReview = async (id) =>{
         let thisReview = this.state.reviews.filter(review => review.id === id)
-        console.log(thisReview)
+        // console.log(thisReview)
         this.setState(prevState => ({
             thisReview
         }))
     }
-    updateReview = async (id, formData) =>{
-        const updatedReview = await fetch(`http://localhost:3001/reviews/${id}`,{
-            method: 'PUT',
-            credentials: 'include',
-            body: JSON.stringify(formData),
-            headers:{"Content-Type": "application/json"}
-        })
-        const parsedResponse = await updatedReview.json();
-        console.log(parsedResponse)
-        await this.getReviews();
-    }
+    // updateReview = async (id, formData) =>{
+    //     const updatedReview = await fetch(`http://localhost:3001/reviews/${id}`,{
+    //         method: 'PUT',
+    //         credentials: 'include',
+    //         body: JSON.stringify(formData),
+    //         headers:{"Content-Type": "application/json"}
+    //     })
+    //     const parsedResponse = await updatedReview.json();
+    //     console.log(parsedResponse)
+    //     if (parsedResponse.status === 200){
+    //         await this.getReviews();
+    //     }
+    //     await this.getReviews();
+    // }
     render(){
         return(
             <div>
@@ -51,7 +54,7 @@ class ReviewContainer extends Component {
                 <Switch>
                     <Route exact path="/reviews" render={(props) => <ReviewsList reviews={this.state.reviews} handleClick={this.handleClick}/>}/>
                     {/* <Route path='/reviews/:id' render={(props)=> <ReviewShow reviews={this.state.reviews} findReview={this.findReview} reviewInfo={this.state.thisReview[0]}/>}/> */}
-                    <Route path ="/reviews/:id" component={ReviewShow} updateReview={this.updateReview}/>
+                    <Route path ="/reviews/:id" component={ReviewShow} updateReview={this.updateReview} getReviews={this.getReviews}/>
                 </Switch>
                 
             </div>

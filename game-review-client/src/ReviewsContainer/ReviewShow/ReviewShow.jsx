@@ -30,9 +30,26 @@ class Review extends Component {
         }))
        
     }
+    updateReview = async (id, formData) =>{
+        const updatedReview = await fetch(`http://localhost:3001/reviews/${id}`,{
+            method: 'PUT',
+            // credentials: 'include',
+            body: JSON.stringify(formData),
+            headers:{
+                "Content-Type": "application/json"
+            }
+        })
+        const parsedResponse = await updatedReview.json();
+        console.log(parsedResponse)
+        // if (parsedResponse.status === 200){
+        //     await this.findReview();
+        // }
+        await this.findReview();
+    }
     render(){ 
+        console.log(this.state.thisReview)
         //if the user manually types in an id that doesn't exist, this will display on the page
-        if(this.state.thisReview.status== 404){
+        if(this.state.thisReview==null){
             return (<div>Review not found<br/>
                 <Link to="/reviews">Back</Link>
             </div>)
@@ -42,7 +59,7 @@ class Review extends Component {
                 <h1>{this.state.thisReview.title}</h1>
                 <p>{this.state.thisReview.description}</p>
                 <p>{this.state.thisReview.review}</p>
-                <EditReview review={this.state.thisReview} />
+                <EditReview review={this.state.thisReview} updateReview={this.updateReview} />
                 <Link to="/reviews">Back</Link>
             </div> 
         )

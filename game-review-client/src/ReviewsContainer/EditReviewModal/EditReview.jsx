@@ -28,6 +28,7 @@ class EditReview extends Component{
         e.preventDefault();
         this.toggle()
         console.log(this.state)
+        this.props.updateReview(this.props.review.id, this.state)
     }
     render(){
         return(
