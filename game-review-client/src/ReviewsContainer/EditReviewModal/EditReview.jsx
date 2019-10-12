@@ -8,7 +8,7 @@ class EditReview extends Component{
             id: this.props.review.id,
             title: this.props.review.title,
             description: this.props.review.description,
-            review: this.props.review.review,
+            opinion: this.props.review.opinion,
             modal: false
         };
         this.toggle = this.toggle.bind(this);
@@ -28,7 +28,8 @@ class EditReview extends Component{
         e.preventDefault();
         this.toggle()
         console.log(this.state)
-        this.props.updateReview(this.props.review.id, this.state)
+        const id = this.props.review.id
+        this.props.updateReview(id, this.state)
     }
     render(){
         return(
@@ -40,7 +41,7 @@ class EditReview extends Component{
                         <form>
                             Title:<input type="text" name="title" onChange={this.handleChange} placeholder={this.state.title}/><br/>
                             Description:<input type="text" name="description" onChange={this.handleChange} placeholder={this.state.description}/><br/>
-                            Review:<input type="text" name="review" onChange={this.handleChange} placeholder={this.state.review}/>
+                            Personal Review:<input type="text" name="opinion" onChange={this.handleChange} placeholder={this.state.opinion}/>
                         </form>
                     </ModalBody>
                     <ModalFooter>

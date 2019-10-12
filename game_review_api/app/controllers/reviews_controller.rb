@@ -16,6 +16,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1
   def show
+    @review = Review.find(params["id"])
     render json: {status:200, review: @review}
   end
 
@@ -32,9 +33,13 @@ class ReviewsController < ApplicationController
 
   # PATCH/PUT /reviews/1
   def update
+
+    # puts "THIS IS REVIEW PARAMS RIGHT HERE #{review_params}"
     if @review.update(review_params)
+      # puts review_params
       render json: {status:200, review: @review}
     else
+      # puts review_params
       render json: @review.errors, status: :unprocessable_entity
     end
   end
@@ -47,11 +52,12 @@ class ReviewsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_review
+      puts params["id"]
       @review = Review.find(params[:id])
     end
 
-    # # Only allow a trusted parameter "white list" through.
-    # def review_params
-    #   params.require(:review).permit(:title, :description, :review)
-    # end
+    # Only allow a trusted parameter "white list" through.
+    def review_params
+      params.require(:review).permit(:title, :description, :opinion)
+    end
 end

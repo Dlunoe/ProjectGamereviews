@@ -23,7 +23,7 @@ class Review extends Component {
         //clicking the links in the parent component still passes the id of the oject through to the url
         //this lets the object in the DB be accessed whether the user clicked through or manually types the id in
         let singleReview = await fetch(`http://localhost:3001/reviews/`+id)
-        let objectReview = await singleReview.json(); let thisReview = objectReview.review;
+        let objectReview = await singleReview.json(); let thisReview = objectReview.review
         console.log(thisReview)
         this.setState(prevState => ({
             thisReview
@@ -31,9 +31,11 @@ class Review extends Component {
        
     }
     updateReview = async (id, formData) =>{
+        formData.id = id
+        console.log(id, formData)
         const updatedReview = await fetch(`http://localhost:3001/reviews/${id}`,{
             method: 'PUT',
-            // credentials: 'include',
+            credentials: 'include',
             body: JSON.stringify(formData),
             headers:{
                 "Content-Type": "application/json"
@@ -41,13 +43,13 @@ class Review extends Component {
         })
         const parsedResponse = await updatedReview.json();
         console.log(parsedResponse)
-        // if (parsedResponse.status === 200){
-        //     await this.findReview();
-        // }
-        await this.findReview();
+        if (parsedResponse.status === 200){
+            await this.findReview(parsedResponse.review.id);
+        }
+        await this.findReview(parsedResponse.review.id);
     }
     render(){ 
-        console.log(this.state.thisReview)
+        // console.log(this.state.thisReview)
         //if the user manually types in an id that doesn't exist, this will display on the page
         if(this.state.thisReview==null){
             return (<div>Review not found<br/>
@@ -58,7 +60,7 @@ class Review extends Component {
             <div>
                 <h1>{this.state.thisReview.title}</h1>
                 <p>{this.state.thisReview.description}</p>
-                <p>{this.state.thisReview.review}</p>
+                <p>{this.state.thisReview.opinion}</p>
                 <EditReview review={this.state.thisReview} updateReview={this.updateReview} />
                 <Link to="/reviews">Back</Link>
             </div> 
