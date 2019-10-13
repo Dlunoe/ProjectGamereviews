@@ -35,7 +35,7 @@ class EditReview extends Component{
         return(
             <div>
                 <Button color="primary" onClick={this.toggle} size="sm">Edit</Button>
-                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.classNAme}>
+                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Edit {this.props.review.title}</ModalHeader>
                     <ModalBody>
                         <form>

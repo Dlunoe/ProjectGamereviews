@@ -1,14 +1,22 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {Button} from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 import EditReview from '../EditReviewModal/EditReview';
 
 class Review extends Component {
     constructor(){
         super();
         this.state ={
-            thisReview: []
+            thisReview: [],
+            modal: false
         }
+        this.toggle = this.toggle.bind(this);
+        // this.routeChange = this.routeChange.bind(this);
+    }
+    toggle(){
+        this.setState(prevState=>({
+            modal: !prevState.modal
+        }))
     }
     componentDidMount(){
         //this sets the id variable as an object with id property = to what's typed into the url bar
@@ -48,6 +56,24 @@ class Review extends Component {
         }
         await this.findReview(parsedResponse.review.id);
     }
+    // routeChange() {
+    //     let path = `/reviews` ;
+    //     this.props.history.push(path);
+    //   }
+    deleteReview = async (id)=>{
+       console.log(id)
+        try{
+            const deletedReview = await fetch(`http://localhost:3001/reviews/${id}`,
+            {
+                method: 'DELETE',
+                credentials: "include"
+            })
+            const parsedResponse = await deletedReview.json()
+            this.setState({reviews: this.state.reviews.filter((review, i)=> review.id !== id)})
+        }catch(err){
+            console.log("ERROR", err)
+        }
+    }
     render(){ 
         // console.log(this.state.thisReview)
         //if the user manually types in an id that doesn't exist, this will display on the page
@@ -62,6 +88,21 @@ class Review extends Component {
                 <p>{this.state.thisReview.description}</p>
                 <p>{this.state.thisReview.opinion}</p>
                 <EditReview review={this.state.thisReview} updateReview={this.updateReview} />
+                <Button color="danger" onClick={this.toggle} size="sm">Delete this review?</Button>
+                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.classNAme}>
+                    <ModalHeader toggle={this.toggle}>Delete this review?</ModalHeader>
+                    <ModalBody>
+                        <p>This action is permanent, are you sure you want to delete this review?</p>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="danger" onClick={(e)=>{
+                            e.preventDefault();
+                            this.deleteReview(this.state.thisReview.id);
+                            this.componentDidMount();
+                        }}>Yes</Button>
+                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                    </ModalFooter>
+                </Modal>
                 <Link to="/reviews">Back</Link>
             </div> 
         )
