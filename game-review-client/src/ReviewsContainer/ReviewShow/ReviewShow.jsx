@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 import EditReview from '../EditReviewModal/EditReview';
 
@@ -52,7 +52,8 @@ class Review extends Component {
         const parsedResponse = await updatedReview.json();
         console.log(parsedResponse)
         if (parsedResponse.status === 200){
-            await this.findReview(parsedResponse.review.id);
+            await this.findReview(parsedResponse.review.id)
+            return <Redirect to ="/reviews" />
         }
         await this.findReview(parsedResponse.review.id);
     }
@@ -69,6 +70,7 @@ class Review extends Component {
                 credentials: "include"
             })
             const parsedResponse = await deletedReview.json()
+            console.log(parsedResponse)
             this.setState({reviews: this.state.reviews.filter((review, i)=> review.id !== id)})
         }catch(err){
             console.log("ERROR", err)

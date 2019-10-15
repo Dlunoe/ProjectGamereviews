@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReviewsList from './ReviewsList/ReviewsList';
 import ReviewShow from './ReviewShow/ReviewShow';
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, Redirect} from 'react-router-dom';
 import NewReview from './NewReviewModal/NewReviewModal';
 
 
@@ -46,7 +46,8 @@ class ReviewContainer extends Component {
             });
             const createdJSONReview = await newReview.json();
             console.log(createdJSONReview)
-            this.setState({reviews: [...this.state.reviews, createdJSONReview.data]})
+            this.setState({reviews: [...this.state.reviews, createdJSONReview.review]})
+            await <Redirect to="reviews/" />
         }catch(err){
             console.log(err)
         }

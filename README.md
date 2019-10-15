@@ -18,3 +18,8 @@ Updating soon
 -Create a single landing page for each title that houses all reviews, vs housing each review individually.
 -Add a ratings system & averages
 -->This is following routes of common review pages such as Metacritic, or the Steam store page for a product. If this is implemented, the plan is to keep all reviews averaged together (such as Steam) versus giving a critic section that is weighted differently.
+
+
+---
+### Known errors
+* Update and create routes require refresh to show new data
