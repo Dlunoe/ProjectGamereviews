@@ -69,9 +69,11 @@ class Review extends Component {
                 method: 'DELETE',
                 credentials: "include"
             })
-            const parsedResponse = await deletedReview.json()
-            console.log(parsedResponse)
-            this.setState({reviews: this.state.reviews.filter((review, i)=> review.id !== id)})
+            window.location.reload();
+            // const parsedResponse = await deletedReview.json()
+            // console.log(parsedResponse)
+            // this.setState({reviews: this.state.reviews.filter((review, i)=> review.id !== id)})
+            // return <Redirect to="/reviews" />
         }catch(err){
             console.log("ERROR", err)
         }
@@ -100,7 +102,8 @@ class Review extends Component {
                         <Button color="danger" onClick={(e)=>{
                             e.preventDefault();
                             this.deleteReview(this.state.thisReview.id);
-                            this.componentDidMount();
+                            this.toggle();
+                            return <Redirect to="/reviews" />
                         }}>Yes</Button>
                         <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
