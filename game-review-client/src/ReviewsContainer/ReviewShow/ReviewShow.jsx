@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 import EditReview from '../EditReviewModal/EditReview';
 
@@ -11,7 +11,6 @@ class Review extends Component {
             modal: false
         }
         this.toggle = this.toggle.bind(this);
-        // this.routeChange = this.routeChange.bind(this);
     }
     toggle(){
         this.setState(prevState=>({
@@ -57,10 +56,6 @@ class Review extends Component {
         }
         await this.findReview(parsedResponse.review.id);
     }
-    // routeChange() {
-    //     let path = `/reviews` ;
-    //     this.props.history.push(path);
-    //   }
     deleteReview = async (id)=>{
        console.log(id)
         try{
@@ -69,17 +64,13 @@ class Review extends Component {
                 method: 'DELETE',
                 credentials: "include"
             })
+            console.log(deletedReview)
             window.location.reload();
-            // const parsedResponse = await deletedReview.json()
-            // console.log(parsedResponse)
-            // this.setState({reviews: this.state.reviews.filter((review, i)=> review.id !== id)})
-            // return <Redirect to="/reviews" />
         }catch(err){
             console.log("ERROR", err)
         }
     }
     render(){ 
-        // console.log(this.state.thisReview)
         //if the user manually types in an id that doesn't exist, this will display on the page
         if(this.state.thisReview==null){
             return (<div>Review not found<br/>
@@ -108,7 +99,6 @@ class Review extends Component {
                         <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
-                {/* <Link to="/reviews">Back</Link> */}
             </div> 
         )
     }

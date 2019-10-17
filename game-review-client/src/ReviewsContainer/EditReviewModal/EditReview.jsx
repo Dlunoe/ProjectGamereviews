@@ -39,8 +39,8 @@ class EditReview extends Component{
                     <ModalHeader toggle={this.toggle}>Edit {this.props.review.title}</ModalHeader>
                     <ModalBody>
                         <form>
-                            Description:<input type="text" name="description" onChange={this.handleChange} placeholder={this.state.description}/><br/>
-                            Personal Review:<input type="text" name="opinion" onChange={this.handleChange} placeholder={this.state.opinion}/>
+                            Description:<textarea name="description" onChange={this.handleChange} placeholder={this.state.description}/><br/>
+                            Personal Review:<textarea type="text" name="opinion" onChange={this.handleChange} placeholder={this.state.opinion}/>
                         </form>
                     </ModalBody>
                     <ModalFooter>

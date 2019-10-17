@@ -58,7 +58,6 @@ class ReviewContainer extends Component {
                 <h1 className="header"><Link to="/reviews">Everyone's a Critic</Link></h1>
                 <Switch>
                     <Route exact path="/reviews" render={(props) => <ReviewsList reviews={this.state.reviews} handleClick={this.handleClick} createReview={this.createReview}/>}/>
-                    {/* <Route path='/reviews/:id' render={(props)=> <ReviewShow reviews={this.state.reviews} findReview={this.findReview} reviewInfo={this.state.thisReview[0]}/>}/> */}
                     <Route path ="/reviews/:id" component={ReviewShow} updateReview={this.updateReview} getReviews={this.getReviews} />
                 </Switch>
                 <NewReview createReview={this.createReview}/>

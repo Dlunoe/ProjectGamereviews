@@ -34,12 +34,9 @@ class ReviewsController < ApplicationController
   # PATCH/PUT /reviews/1
   def update
 
-    # puts "THIS IS REVIEW PARAMS RIGHT HERE #{review_params}"
     if @review.update(review_params)
-      # puts review_params
       render json: {status:200, review: @review}
     else
-      # puts review_params
       render json: @review.errors, status: :unprocessable_entity
     end
   end
