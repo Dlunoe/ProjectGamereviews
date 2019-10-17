@@ -13,13 +13,12 @@
 .review-list{
   align-self:center;
   text-align:center;
-  padding-left:0;
   list-style: none;
   -webkit-flex: auto;
   overflow-y: auto;
   height: 80%;
-  width: 80%;
-  padding-left: 13em;
+  width: 85%;
+  padding-left: 15%;
   display:flex;
   flex-direction: column;
 }
@@ -36,7 +35,7 @@ a:visited{
   align-self: center;
   padding: 0 10% 0 10%;
   margin: 0 10% 0 10%;
-  height:80%;
+  height:70%;
   width:80%;
   display:flex;
   flex-wrap: wrap;
