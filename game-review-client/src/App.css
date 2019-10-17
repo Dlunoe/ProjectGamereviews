@@ -35,7 +35,9 @@ a:visited{
   align-self: center;
   padding: 0 10% 0 10%;
   margin: 0 10% 0 10%;
-  height:70%;
+  -webkit-flex: auto;
+  overflow-y: auto;
+  height: 80%;
   width:80%;
   display:flex;
   flex-wrap: wrap;
@@ -57,4 +59,13 @@ a:visited{
 }
 .edit{
 align-self: left;
+}
+@media only screen and (max-width: 768px){
+  /* For Mobile */
+  [class*="add"]{
+    color:green;
+  }
+  [class*="solo-review"]{
+    height:85%
+  }
 }

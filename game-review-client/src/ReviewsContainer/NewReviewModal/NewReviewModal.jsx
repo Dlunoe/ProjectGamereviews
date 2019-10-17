@@ -29,7 +29,7 @@ class NewReview extends Component {
     }
     render(){
         return(
-            <div>
+            <div className="new">
                 <Button color="primary" onClick={this.toggle}>Add a new game review</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Add a review</ModalHeader>
