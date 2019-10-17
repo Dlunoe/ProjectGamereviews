@@ -83,11 +83,11 @@ class Review extends Component {
         //if the user manually types in an id that doesn't exist, this will display on the page
         if(this.state.thisReview==null){
             return (<div>Review not found<br/>
-                <Link to="/reviews">Back</Link>
+                
             </div>)
         }
         return(
-            <div>
+            <div className="solo-review">
                 <h1>{this.state.thisReview.title}</h1>
                 <p>{this.state.thisReview.description}</p>
                 <p>{this.state.thisReview.opinion}</p>
@@ -108,7 +108,7 @@ class Review extends Component {
                         <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
-                <Link to="/reviews">Back</Link>
+                {/* <Link to="/reviews">Back</Link> */}
             </div> 
         )
     }

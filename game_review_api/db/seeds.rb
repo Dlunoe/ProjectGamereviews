@@ -5,10 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-10.times do
+25.times do
     Review.create(
         title: Faker::TvShows::MichaelScott.quote,
         description: Faker::Books::Lovecraft.paragraph,
-        review: Faker::TvShows::DrWho.quote
+        opinion: Faker::TvShows::DrWho.quote
     )
 end

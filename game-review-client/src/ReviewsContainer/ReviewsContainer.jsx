@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReviewsList from './ReviewsList/ReviewsList';
 import ReviewShow from './ReviewShow/ReviewShow';
-import {Route, Switch, Redirect} from 'react-router-dom';
+import {Route, Switch, Redirect, Link} from 'react-router-dom';
 import NewReview from './NewReviewModal/NewReviewModal';
 
 
@@ -54,8 +54,8 @@ class ReviewContainer extends Component {
     }
     render(){
         return(
-            <div>
-                <h1>welcome to reviews</h1>
+            <div className="container">
+                <h1 className="header"><Link to="/reviews">Everyone's a Critic</Link></h1>
                 <Switch>
                     <Route exact path="/reviews" render={(props) => <ReviewsList reviews={this.state.reviews} handleClick={this.handleClick} createReview={this.createReview}/>}/>
                     {/* <Route path='/reviews/:id' render={(props)=> <ReviewShow reviews={this.state.reviews} findReview={this.findReview} reviewInfo={this.state.thisReview[0]}/>}/> */}

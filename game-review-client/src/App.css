@@ -1,22 +1,33 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background: url(https://images.pexels.com/photos/235985/pexels-photo-235985.jpeg?cs=srgb&dl=ancient-antique-art-235985.jpg&fm=jpg);
+  background-position: absolute;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color:white;
+  height: stretch;
+  background-size: stretch;
 }
 
-.App-link {
-  color: #09d3ac;
+.review-list{
+  text-align:center;
+  padding-left:0;
+  list-style: none;
+  -webkit-flex: auto;
+  overflow-y: auto;
+  height: 80%;
+  width: 80%;
+  padding-left: 15em;
+  display:flex;
+  flex-direction: column;
+}
+a:link{
+  color:white;
+}
+a:hover{
+  color:#e6ffff;
+}
+a:visited{
+  color:black;
 }
