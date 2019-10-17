@@ -31,3 +31,30 @@ a:hover{
 a:visited{
   color:black;
 }
+.solo-review{
+  align-self: center;
+  padding: 0 10% 0 10%;
+  margin: 0 10% 0 10%;
+  height:80%;
+  width:80%;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.title{
+  
+  width:100%;
+}
+.delete{
+  height:30px;
+  padding: 0 0 0 40%;
+}
+.description{
+  width:95%;
+}
+.opinion{
+  width:95%;
+}
+.edit{
+align-self: left;
+}

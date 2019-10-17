@@ -33,8 +33,8 @@ class EditReview extends Component{
     }
     render(){
         return(
-            <div>
-                <Button color="primary" onClick={this.toggle} size="sm">Edit</Button>
+            <div className="edit">
+                <Button color="primary" onClick={this.toggle} size="sm" >Edit</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Edit {this.props.review.title}</ModalHeader>
                     <ModalBody>

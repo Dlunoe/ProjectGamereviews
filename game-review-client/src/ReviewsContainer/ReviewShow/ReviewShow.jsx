@@ -88,11 +88,11 @@ class Review extends Component {
         }
         return(
             <div className="solo-review">
-                <h1>{this.state.thisReview.title}</h1>
-                <p>{this.state.thisReview.description}</p>
-                <p>{this.state.thisReview.opinion}</p>
+                <h1 className="title">{this.state.thisReview.title}</h1>
+                <p className="description">{this.state.thisReview.description}</p>
+                <p className="opinion">{this.state.thisReview.opinion}</p>
                 <EditReview review={this.state.thisReview} updateReview={this.updateReview} />
-                <Button color="danger" onClick={this.toggle} size="sm">Delete this review?</Button>
+                <Button color="danger" onClick={this.toggle} size="sm" className="delete">Delete this review?</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.classNAme}>
                     <ModalHeader toggle={this.toggle}>Delete this review?</ModalHeader>
                     <ModalBody>
