@@ -11,6 +11,7 @@
 }
 
 .review-list{
+  align-self:center;
   text-align:center;
   padding-left:0;
   list-style: none;
@@ -18,7 +19,7 @@
   overflow-y: auto;
   height: 80%;
   width: 80%;
-  padding-left: 15em;
+  padding-left: 13em;
   display:flex;
   flex-direction: column;
 }
